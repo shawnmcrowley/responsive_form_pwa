@@ -54,7 +54,7 @@ export default function DataForm() {
       <div className="w-full max-w-md bg-white p-8 shadow-lg rounded-2xl border border-gray-100">
         <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Create Account
+            Add Lab Data
           </h2>
           <p className="text-gray-500 text-sm">Sign up to get started</p>
         </div>
@@ -246,7 +246,7 @@ export default function DataForm() {
             type="submit"
             className="w-full bg-indigo-600 text-white py-3 px-4 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors text-sm font-medium shadow-sm"
           >
-            Create Account
+            Create Data
           </button>
         </form>
 
