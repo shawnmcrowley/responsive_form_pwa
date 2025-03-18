@@ -19,17 +19,7 @@ Open [http://localhost:3000](http://localhost:3000) with your browser to see the
 
 <a name="readme-top"></a>
 
-[![LinkedIn][linkedin-shield]][https://www.linkedin.com/in/shawnmcrowley]
-
-
-
-<!-- PROJECT LOGO -->
-<br />
-<div align="center">
-  <a href="https://github.com/shawnmcrowley/responsive_form_pwa">
-    <img src="logo.png" alt="Logo" width="80" height="80">
-  </a>
-</div>
+https://www.linkedin.com/in/shawnmcrowley
 
 
 
@@ -68,7 +58,7 @@ Here's why:
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][https://nextjs.org]
+* https://nextjs.org
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
