@@ -20,8 +20,10 @@ export default function DataForm() {
     })
   }
 
+  const [message, setMessage] = useState()
   const handleSubmit = e => {
     e.preventDefault()
+    setMessage("Data Created Succesfully!")
 
     // Basic validation
     if (
@@ -54,7 +56,7 @@ export default function DataForm() {
       <div className="w-full max-w-md bg-white p-8 shadow-lg rounded-2xl border border-gray-100">
         <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
-            Add Lab Data
+            Manage Quality Lab Data
           </h2>
           <p className="text-gray-500 text-sm">Sign up to get started</p>
         </div>
@@ -249,6 +251,7 @@ export default function DataForm() {
             Create Data
           </button>
         </form>
+        {message && <p className="text-green-600 mt-3">{message}</p>}
 
         <div className="mt-6 text-center text-sm">
           <p className="text-gray-600">
