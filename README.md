@@ -60,8 +60,6 @@ Here's why:
 * You should implement DRY principles to the rest of your life :smile:
 
 
-Use the `BLANK_README.md` to get started.
-
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 
@@ -70,7 +68,7 @@ Use the `BLANK_README.md` to get started.
 
 This section should list any major frameworks/libraries used to bootstrap your project. Leave any add-ons/plugins for the acknowledgements section. Here are a few examples.
 
-* [![Next][Next.js]][Next-url]
+* [![Next][Next.js]][https://nextjs.org]
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
@@ -104,8 +102,8 @@ Distributed under the MIT License. See `LICENSE.txt` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/shawnmcrowley) - scrowley@buffalo.edu
+Your Name - [@shawnmcrowley](https://twitter.com/shawnmcrowley) - scrowley@buffalo.edu
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/shawnmcrowley/responsive_form_pwa)
+Project Link: [https://github.com/shawnmcrowley/responsive_form_pwa](https://github.com/shawnmcrowley/responsive_form_pwa)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
