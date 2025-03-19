@@ -58,7 +58,6 @@ export default function DataForm() {
           <h2 className="text-3xl font-bold text-gray-800 mb-2">
             Manage Quality Lab Data
           </h2>
-          <p className="text-gray-500 text-sm">Sign up to get started</p>
         </div>
 
         {error && (
@@ -218,52 +217,14 @@ export default function DataForm() {
               onChange={handleChange}
             />
           </div>
-
-          <div className="flex items-center">
-            <input
-              id="terms"
-              name="terms"
-              type="checkbox"
-              className="h-4 w-4 text-indigo-600 focus:ring-indigo-500 border-gray-300 rounded"
-            />
-            <label htmlFor="terms" className="ml-2 block text-sm text-gray-700">
-              I agree to the{" "}
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Terms of Service
-              </a>{" "}
-              and{" "}
-              <a
-                href="#"
-                className="font-medium text-indigo-600 hover:text-indigo-500"
-              >
-                Privacy Policy
-              </a>
-            </label>
-          </div>
-
           <button
             type="submit"
-            className="w-full bg-teal-500 text-white py-3 px-4 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors text-sm font-medium shadow-sm"
+            className="w-full bg-teal-600 text-white py-3 px-4 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors text-sm font-medium shadow-sm"
           >
             Create Data
           </button>
         </form>
-        {message && <p className="text-green-600 mt-3">{message}</p>}
-
-        <div className="mt-6 text-center text-sm">
-          <p className="text-gray-600">
-            Already have an account?{" "}
-            <a
-              href="#"
-              className="font-medium text-indigo-600 hover:text-indigo-500"
-            >
-              Sign in
-            </a>
-          </p>
-        </div>
+        {message && <p className="text-teal-600 mt-3">{message}</p>}
       </div>
     </div>
   )
