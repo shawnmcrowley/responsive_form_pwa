@@ -1,9 +1,23 @@
-import Form from 'next/form'
-
+"use client"
 export default function PostForm() {
+
+  const handleSubmit = async (e) => {
+    alert("On Submit")
+    const response = await fetch('/api/v1/postData', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(formData),
+    });
+    const result = await response.json();
+    console.log(result);
+  };
+
+ 
   return (
     <div>Form Doing Get Operations to API Route
-      <form className="w-full max-w-sm" action="/api/postData">
+      <form className="w-full max-w-sm" onSubmit={handleSubmit}>
         <div className="flex items-center border-b border-teal-600 py-2">
           <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" name="first_name" type="text" placeholder="First Name" aria-label="first name"></input>
           <input className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none" name="last_name" type="text" placeholder="Last Name" aria-label="last name"></input>

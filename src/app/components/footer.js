@@ -9,14 +9,14 @@ export default function Footer() {
             </div>
             <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
                 <div className="text-sm lg:flex-grow">
+                    <a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
+                        Home
+                    </a>
                     <a href="/api-docs" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
-                        Docs
+                        API Documentation
                     </a>
-                    <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
-                        Examples
-                    </a>
-                    <a href="#responsive-header" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
-                        Blog
+                    <a href="/forms" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
+                        Sample Form
                     </a>
                     <a href="#mailto:shawn.crowley@lycra.com" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600">
                         Contact Me
