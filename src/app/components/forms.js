@@ -23,7 +23,8 @@ export default function DataForm() {
   const [message, setMessage] = useState()
   const handleSubmit = e => {
     e.preventDefault()
-    setMessage("Data Created Succesfully!")
+    
+    
 
     // Basic validation
     if (
@@ -48,7 +49,10 @@ export default function DataForm() {
     }
 
     console.log("Signing up with:", formData)
+    //document.getElementById("SubmitForm").reset();
+    setMessage("Data Created Successfully!")
     setError("")
+    
   }
 
   return (
@@ -80,7 +84,7 @@ export default function DataForm() {
           </div>
         )}
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form id="SubmitForm" onSubmit={handleSubmit} className="space-y-6">
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-1">
