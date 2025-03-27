@@ -14,7 +14,7 @@ export default async function IndexPage() {
   */
      
      import React from 'react';
-     import ReactSwagger from './next-swagger';
+     import ReactSwagger from '../components/next-swagger';
      import swaggerSpec from '../../../swaggerConfig';
 
      const Docs = () => {
