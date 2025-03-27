@@ -56,15 +56,18 @@ const destroyConnection = (connection) => {
  * /api/v1/persons:
  *   get:
  *     summary: Retrieve a List of All Persons in Snowflake
- *     description: Returns all Persons in Snowflake
+ *     description: Returns users
+ *     tags:
+ *       - Persons
+ *     produces:
+ *       - application/json
  *     responses:
  *       200:
- *         description: List of Persons located in Snowflake
+ *         description: Success
  *       404:
  *         description: Resource Not Found
- *       500:
- *         description: Server Error
  */
+
 
 export async function GET(req) {
   try {
@@ -80,28 +83,28 @@ export async function GET(req) {
 
     // Connect to Snowflake
     await connectToSnowflake(connection);
-    
+
     // Execute query - modify the table name as needed
     const tableName = `${process.env.SNOWFLAKE_DATABASE}.${process.env.SNOWFLAKE_SCHEMA}.${process.env.SNOWFLAKE_TABLE}`;
     const rows = await executeQuery(connection, `SELECT * FROM ${tableName}`);
-    
+
     // Close connection
     await destroyConnection(connection);
-    
+
     // Return data as JSON
-    return NextResponse.json({ 
-      success: true, 
+    return NextResponse.json({
+      success: true,
       data: rows,
       count: rows.length
     });
-    
+
   } catch (error) {
     console.error("Error in Snowflake API route:", error);
-    return NextResponse.json({ 
-      success: false, 
-      error: error.message 
-    }, { 
-      status: 500 
+    return NextResponse.json({
+      success: false,
+      error: error.message
+    }, {
+      status: 500
     });
   }
 }
@@ -110,24 +113,26 @@ export async function GET(req) {
  * @swagger
  * /api/v1/persons:
  *   post:
- *     summary: Create a New Person in Snowflake
- *     description: Returns Successfully created Person
+ *     summary: Create a new Person in Snowflake
+ *     description: Create a Person with Name, Email
+ *     tags:
+ *       - Persons
+ *     produces:
+ *       - application/json
  *     responses:
  *       200:
- *         description: Creation Completed Successfully
+ *         description: Successful Creation
  *       404:
  *         description: Resource Not Found
- *       500:
- *         description: Server Error
  */
 
 export async function POST(req, response) {
-    return NextResponse({
-      success: true,
-      message: "Person Created Successfully"
-    }, {}
+  return NextResponse({
+    success: true,
+    message: "Person Created Successfully"
+  }, {}
 
-    )
+  )
 }
 
 
