@@ -15,7 +15,10 @@ export default function Footer() {
                     <a href="/api-docs" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
                         API Documentation
                     </a>
-                    <a href="/forms" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
+                    <a href="/formutil" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
+                        Form Utility
+                    </a>
+                    <a href="/forms" className="block mt-4 lg:inline-block lg:mt-0 text-whie-600 hover:text-teal-600 mr-4">
                         Sample Form
                     </a>
                     <a href="#mailto:shawn.crowley@lycra.com" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600">

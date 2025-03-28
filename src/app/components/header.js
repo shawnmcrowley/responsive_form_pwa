@@ -18,6 +18,9 @@ export default function Header() {
                     <a href="/api-docs" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
                         API Documentation
                     </a>
+                    <a href="/formutil" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4">
+                        Form Utility
+                    </a>
                     <a href="/forms" className="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white">
                         Sample Form
                     </a>
