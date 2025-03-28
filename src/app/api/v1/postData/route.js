@@ -1,4 +1,4 @@
-import { NextRequest, NextResponse } from "next/server"
+import { NextResponse } from "next/server"
 /*
 export async function GET(req) {
     const searchParams = new URLSearchParams(req.nextUrl.search)
@@ -9,14 +9,34 @@ export async function GET(req) {
 }
 */
 
-export async function POST(req, res){
-    //const data = req.body
-    const formData = await req.formData()
-    const firstname = formData.get('first_name')
-    const lastname = formData.get('last_name')
-    console.log('Received data: ', firstname, lastname)
-    return NextResponse.json({message: "Data Submitted Successfully", firstname, lastname,
-        status: 200
-    })
 
+export async function POST(req) {
+    try {
+        const formData = await req.formData()
+        const name = formData.get('name')
+        const email = formData.get('email')
+
+        // Validate input
+        if (!name || !email) {
+            return NextResponse.json({
+                message: "Missing required fields",
+                status: 400
+            }, { status: 400 })
+        }
+
+        console.log('Received data: ', name, email)
+        
+        return NextResponse.json({
+            message: "Data Submitted Successfully", 
+            name, 
+            email,
+            status: 200
+        }, { status: 200 })
+    } catch (error) {
+        console.error('Error processing form data:', error)
+        return NextResponse.json({
+            message: "Error processing form data",
+            status: 500
+        }, { status: 500 })
+    }
 }

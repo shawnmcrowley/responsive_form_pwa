@@ -12,6 +12,7 @@ export default function PostForm() {
     });
     const result = await response.json();
     console.log(result);
+    e.target.reset()
   };
 
  
