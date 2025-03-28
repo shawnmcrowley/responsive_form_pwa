@@ -59,11 +59,28 @@ const destroyConnection = (connection) => {
  *     description: Returns users
  *     tags:
  *       - Persons
- *     produces:
- *       - application/json
  *     responses:
  *       200:
  *         description: Success
+ *         content:
+ *           applicaton/json:
+ *             schema:
+ *               type: array
+ *               items:
+ *                 type: object
+ *                 propeties:
+ *                    id:
+ *                      type: integer
+ *                      description: Person ID
+ *                    firstname:
+ *                      type: string
+ *                      description: First Name
+ *                    lastname:
+ *                      type: string
+ *                      description: Last Name
+ *                    email:
+ *                      type: string
+ *                      description: Email
  *       404:
  *         description: Resource Not Found
  */
@@ -117,8 +134,22 @@ export async function GET(req) {
  *     description: Create a Person with Name, Email
  *     tags:
  *       - Persons
- *     produces:
- *       - application/json
+ *     requestBody:
+ *       requied: true
+ *       content:
+ *         application/json:
+ *           schema:
+ *             type: object
+ *             properties:
+ *               firstname:
+ *                type: string
+ *                description: First Name
+ *               lastname:
+ *                type: string
+ *                description: Last Name
+ *               email:
+ *                 type: string
+ *                 description: Email
  *     responses:
  *       200:
  *         description: Successful Creation
