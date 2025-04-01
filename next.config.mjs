@@ -4,7 +4,8 @@ import withPWA from 'next-pwa';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,      // Enable React strict mode for improved error handling
+    //reactStrictMode: true,      // Enable React strict mode for improved error handling
+    reactStrictMode: false,       // Set to False to surpress older React errors
     //swcMinify: false,            // This configuration OPTION has been removed and is enabled by DEFAULT in Nextjs 15+
     };
 
