@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import snowflake from "snowflake-sdk";
+import { resolve } from "path";
+
 
 // Configure Snowflake
 snowflake.configure({
@@ -10,7 +12,7 @@ snowflake.configure({
 // Promisify snowflake connection
 const connectToSnowflake = (connection) => {
   return new Promise((resolve, reject) => {
-    connection.connect((err) => {
+    connection.connectAsync((err) => {
       if (err) {
         console.error("Unable to connect to Snowflake:", err.message);
         reject(err);
@@ -95,7 +97,14 @@ export async function GET(req) {
       password: process.env.SNOWFLAKE_PASSWORD,
       database: process.env.SNOWFLAKE_DATABASE,
       schema: process.env.SNOWFLAKE_SCHEMA,
-      warehouse: process.env.SNOWFLAKE_WAREHOUSE
+      warehouse: process.env.SNOWFLAKE_WAREHOUSE,
+      role: process.env.SNOWFLAKE_ROLE,
+      authenticator: process.env.SNOWFLAKE_AUTHENTICATOR,
+      // Use resolve for straight Private Key Authentication
+      privateKeyPath: resolve(process.cwd(), process.env.SNOWFLAKE_PRIVATEKEYPATH),
+      // Use readFileSync funtion if you need to read the file directly
+      //privateKeyPath: readFileSync(resolve(process.cwd(),process.env.SNOWFLAKE_PRIVATEKEYPATH ),'utf8'),
+      privateKeyPass: process.env.SNOWFLAKE_PRIVATEKEYPASS
     });
 
     // Connect to Snowflake
@@ -157,7 +166,24 @@ export async function GET(req) {
  *         description: Resource Not Found
  */
 
-export async function POST(req, response) {
+export async function POST( req ) {
+
+  const connection = snowflake.createConnection({
+    account: process.env.SNOWFLAKE_ACCOUNT,
+    username: process.env.SNOWFLAKE_USERNAME,
+    password: process.env.SNOWFLAKE_PASSWORD,
+    database: process.env.SNOWFLAKE_DATABASE,
+    schema: process.env.SNOWFLAKE_SCHEMA,
+    warehouse: process.env.SNOWFLAKE_WAREHOUSE,
+    role: process.env.SNOWFLAKE_ROLE,
+    authenticator: process.env.SNOWFLAKE_AUTHENTICATOR,
+    // Use resolve for straight Private Key Authentication
+    privateKeyPath: resolve(process.cwd(), process.env.SNOWFLAKE_PRIVATEKEYPATH),
+    // Use readFileSync funtion if you need to read the file directly
+    //privateKeyPath: readFileSync(resolve(process.cwd(),process.env.SNOWFLAKE_PRIVATEKEYPATH ),'utf8'),
+    privateKeyPass: process.env.SNOWFLAKE_PRIVATEKEYPASS
+  });
+
   return NextResponse({
     success: true,
     message: "Person Created Successfully"

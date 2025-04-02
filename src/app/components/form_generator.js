@@ -19,7 +19,9 @@ export const FormGenerator = ({
       initialData[field.name] = field.defaultValue || ""
     })
     setFormData(initialData)
-  }, [config])
+  }, [])  // Removed [config] from useEffect dependency array
+
+ 
 
   // Map input types to corresponding components
   const fieldRenderers = {
@@ -30,6 +32,23 @@ export const FormGenerator = ({
         </label>
         <input
           type="text"
+          name={field.name}
+          id={field.name}
+          placeholder={field.placeholder}
+          required={field.required}
+          value={formData[field.name] || ""}
+          onChange={handleChange}
+          className="p-2 border rounded w-full"
+        />
+      </div>
+    ),
+    password: field => (
+      <div key={field.name} className="flex flex-col space-y-2 w-full">
+        <label htmlFor={field.name} className="font-medium">
+          {field.label}
+        </label>
+        <input
+          type="password"
           name={field.name}
           id={field.name}
           placeholder={field.placeholder}

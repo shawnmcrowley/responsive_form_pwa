@@ -1,7 +1,7 @@
 {
-    "id":1,
     "FirstName": "Jim",
     "LastName": "Walker",
     "Email": "jim.walker@abcd.com",
-    "Password": "XXXXXXXXXX"
+    "Password": "XXXXXXXXXX",
+    "Deleted": false
 }

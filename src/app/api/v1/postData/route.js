@@ -13,23 +13,27 @@ export async function GET(req) {
 export async function POST(req) {
     try {
         const formData = await req.formData()
-        const name = formData.get('name')
+        const firstname = formData.get('firstname')
+        const lastname = formData.get('lastname')
         const email = formData.get('email')
+        const password = formData.get('password')
 
         // Validate input
-        if (!name || !email) {
+        if (!firstname || !lastname || !email || !password) {
             return NextResponse.json({
                 message: "Missing required fields",
                 status: 400
             }, { status: 400 })
         }
 
-        console.log('Received data: ', name, email)
+        console.log('Received data: ', firstname, lastname, email, password)
         
         return NextResponse.json({
             message: "Data Submitted Successfully", 
-            name, 
+            firstname, 
+            lastname,
             email,
+            password,
             status: 200
         }, { status: 200 })
     } catch (error) {

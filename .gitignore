@@ -46,3 +46,6 @@ next-env.d.ts
 utils
 certificates
 snowflake.log
+
+.gitignore
+*.p8
