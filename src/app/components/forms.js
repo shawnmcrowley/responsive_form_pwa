@@ -223,12 +223,12 @@ export default function DataForm() {
           </div>
           <button
             type="submit"
-            className="w-full bg-teal-600 text-white py-3 px-4 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors text-sm font-medium shadow-sm"
+            className="w-full bg-indigo-500 text-white py-3 px-4 rounded-xl hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 transition-colors text-sm font-medium shadow-sm"
           >
             Create Data
           </button>
         </form>
-        {message && <p className="text-teal-600 mt-3">{message}</p>}
+        {message && <p className="text-indigo-600 mt-3">{message}</p>}
       </div>
     </div>
   )

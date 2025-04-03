@@ -1,29 +1,27 @@
 export default function Footer() {
     return (
-        <nav className="flex items-center justify-between flex-wrap bg-gradient-to-br from-indigo-50 to-blue-100 p-6">
 
-            <div className="block lg:hidden">
-                <button className="flex items-center px-3 py-2 border rounded text-white-200 border-teal-400 hover:text-teal hover:border-white">
-                    <svg className="fill-current h-3 w-3" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><title>Menu</title><path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" /></svg>
-                </button>
+
+        <footer className="bg-white rounded-lg shadow-sm m-4 dark:bg-gray-800">
+            <div className="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
+                <span className="text-sm text-gray-500 sm:text-center dark:text-gray-400">© 2025 <a href="/" className="hover:underline">The Lycra Company™</a>. All Rights Reserved.
+                </span>
+                <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
+                    <li>
+                        <a href="https://github.com/shawnmcrowley/responsive_form_pwa" className="hover:underline me-4 md:me-6">About</a>
+                    </li>
+                    <li>
+                        <a href="/api-docs" className="hover:underline me-4 md:me-6">API Documentation</a>
+                    </li>
+                    <li>
+                        <a href="/formutil" className="hover:underline me-4 md:me-6">Demo</a>
+                    </li>
+                    <li>
+                        <a href="mailto:shawn.crowley@lycra.com" className="hover:underline">Contact</a>
+                    </li>
+                </ul>
             </div>
-            <div className="w-full block flex-grow lg:flex lg:items-center lg:w-auto">
-                <div className="text-sm lg:flex-grow">
-                    <a href="/" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
-                        Home
-                    </a>
-                    <a href="/api-docs" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
-                        API Documentation
-                    </a>
-                    <a href="/formutil" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600 mr-4">
-                        Form Utility
-                    </a>
-                    <a href="#mailto:shawn.crowley@lycra.com" className="block mt-4 lg:inline-block lg:mt-0 text-white-600 hover:text-teal-600">
-                        Contact Me
-                    </a>
-                </div>
-            </div>
-        </nav>
+        </footer>
 
     )
 }
