@@ -147,7 +147,7 @@ export async function GET(req) {
  *     requestBody:
  *       requied: true
  *       content:
- *         application/json:
+ *         multipart/form-data:
  *           schema:
  *             type: object
  *             properties:
@@ -158,8 +158,11 @@ export async function GET(req) {
  *                type: string
  *                description: Last Name
  *               email:
+ *                type: string
+ *                description: Email
+ *               password:
  *                 type: string
- *                 description: Email
+ *                 description: Password
  *     responses:
  *       200:
  *         description: Successful Creation
