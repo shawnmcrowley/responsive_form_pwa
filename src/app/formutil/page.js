@@ -33,7 +33,7 @@ export default function Home() {
                 formDataToSend.append(key, formData[key])
             })
 
-            const response = await fetch('/api/v1/postData', {
+            const response = await fetch('/api/v1/persons', {
                 method: 'POST',
                 body: formDataToSend,
                 // DO NOT set Content-Type header when sending FormData
