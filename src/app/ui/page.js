@@ -83,23 +83,23 @@ export default function Page() {
 
 
     return (
-        
+
         <div className="grid-container" style={{
-            height:"70vh",
-            width: "80%",
+            height: "70vh",
+            width: "90%",
             maxWidth: "1200px",
             margin: "0 auto"
         }}>
-            <div className="center"><h1>Data Display</h1></div>
-        <div className="ag-theme-quartz" style={{ height: "100%", width:"100%" }}>
+            <h4 className="text-2xl font-bold dark:text-white">Data Visualization Dashboard</h4>
+            <div className="ag-theme-quartz" style={{ height: "100%", width: "100%" }}>
                 <AgGridReact
-                rowData={rowData}
-                columnDefs={colDefs}
-                defaultColDef={defaultColDef}
-                theme="legacy"
-                domLayout="autoHeight"                
+                    rowData={rowData}
+                    columnDefs={colDefs}
+                    defaultColDef={defaultColDef}
+                    theme="legacy"
+                    domLayout="autoHeight"
                 />
-        </div>
+            </div>
         </div>
     )
 

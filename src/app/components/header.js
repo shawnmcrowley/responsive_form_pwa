@@ -18,22 +18,22 @@ export default function Header() {
         <div className="flex items-center">
             <ul className="flex flex-row font-medium mt-0 space-x-8 rtl:space-x-reverse text-sm">
                 <li>
-                    <a href="/" className="text-gray-900 dark:text-white hover:underline" aria-current="page">Home</a>
+                    <a href="/" className="text-gray-500 dark:text-white hover:underline" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="https://github.com/shawnmcrowley/responsive_form_pwa/" className="text-gray-900 dark:text-white hover:underline">Getting Started</a>
+                    <a href="https://github.com/shawnmcrowley/responsive_form_pwa/" className="text-gray-500 dark:text-white hover:underline">Getting Started</a>
                 </li>
                 <li>
-                    <a href="/api-docs" className="text-gray-900 dark:text-white hover:underline">API Documentation</a>
+                    <a href="/api-docs" className="text-gray-500 dark:text-white hover:underline">API Documentation</a>
                 </li>
                 <li>
-                    <a href="/api/v1/persons" className="text-gray-900 dark:text-white hover:underline">API's (Get)</a>
+                    <a href="/api/v1/persons" className="text-gray-500 dark:text-white hover:underline">API's (Get)</a>
                 </li>
                 <li>
-                    <a href="/formutil" className="text-gray-900 dark:text-white hover:underline">Demo Form</a>
+                    <a href="/formutil" className="text-gray-500 dark:text-white hover:underline">Demo Form</a>
                 </li>
                 <li>
-                    <a href="/ui" className="text-gray-900 dark:text-white hover:underline">View Data</a>
+                    <a href="/ui" className="text-gray-500 dark:text-white hover:underline">View Data</a>
                 </li>
             </ul>
         </div>
