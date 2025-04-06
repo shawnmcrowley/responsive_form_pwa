@@ -130,6 +130,9 @@ export default function Page() {
               defaultColDef={defaultColDef}
               theme="legacy"
               domLayout="autoHeight"
+              pagination="true"
+              paginationPageSize="10"
+              paginationPageSizeSelector="[10,20,50,100]"
             />
           </div>
         </div>
