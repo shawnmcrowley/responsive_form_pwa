@@ -115,23 +115,25 @@ export default function Page() {
 
     return (
 
+        <main className="flex-grow">
         <div className="grid-container" style={{
-            height: "70vh",
-            width: "90%",
-            maxWidth: "1200px",
-            margin: "0 auto"
+          width: "90%",
+          maxWidth: "1200px",
+          margin: "0 auto",
+          paddingBottom: "2rem" // Add some bottom padding
         }}>
-            <h4 className="text-2xl font-bold dark:text-white">Data Visualization Console</h4>
-            <div className="ag-theme-quartz" style={{ height: "100%", width: "100%" }}>
-                <AgGridReact
-                    rowData={rowData}
-                    columnDefs={colDefs}
-                    defaultColDef={defaultColDef}
-                    theme="legacy"
-                    domLayout="autoHeight"
-                />
-            </div>
+          <h4 className="text-2xl font-bold dark:text-white">Data Visualization Console</h4>
+          <div className="ag-theme-quartz" style={{ width: "100%" }}>
+            <AgGridReact
+              rowData={rowData}
+              columnDefs={colDefs}
+              defaultColDef={defaultColDef}
+              theme="legacy"
+              domLayout="autoHeight"
+            />
+          </div>
         </div>
+      </main>
     )
 
 }

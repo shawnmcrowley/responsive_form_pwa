@@ -33,7 +33,7 @@ export default function Header() {
                     <a href="/formutil" className="text-gray-500 dark:text-white hover:underline">Demo Form</a>
                 </li>
                 <li>
-                    <a href="/ui" className="text-gray-500 dark:text-white hover:underline">View Data</a>
+                    <a href="/ui/console" className="text-gray-500 dark:text-white hover:underline">View Data</a>
                 </li>
             </ul>
         </div>
