@@ -116,13 +116,16 @@ export default function Page() {
     return (
 
         <main className="flex-grow">
-        <div className="grid-container" style={{
+        <div className="grid-container pt-8" style={{
           width: "90%",
           maxWidth: "1200px",
           margin: "0 auto",
-          paddingBottom: "2rem" // Add some bottom padding
-        }}>
-          <h4 className="text-2xl font-bold dark:text-white">Data Visualization Console</h4>
+          paddingBottom: "2rem",
+          paddingLeft: "2rem",
+          paddingRight: "2rem"
+
+      }}>
+          <h3 className="text-3xl font-bold mb-6 text-gray-900 dark:text-white">Data Visualization Console</h3>        
           <div className="ag-theme-quartz" style={{ width: "100%" }}>
             <AgGridReact
               rowData={rowData}
