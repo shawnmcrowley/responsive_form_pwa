@@ -27,7 +27,7 @@ export const FormGenerator = ({
   const fieldRenderers = {
     text: field => (
       <div key={field.name} className="flex flex-col space-y-2 w-full">
-        <label htmlFor={field.name} className="font-medium">
+        <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 mb-1">
           {field.label}
         </label>
         <input
@@ -38,15 +38,16 @@ export const FormGenerator = ({
           required={field.required}
           value={formData[field.name] || ""}
           onChange={handleChange}
-          className="p-2 border rounded w-full"
+          className="pl-2 w-full py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
         />
       </div>
     ),
     password: field => (
       <div key={field.name} className="flex flex-col space-y-2 w-full">
-        <label htmlFor={field.name} className="font-medium">
+        <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 mb-1">
           {field.label}
         </label>
+        
         <input
           type="password"
           name={field.name}
@@ -55,13 +56,14 @@ export const FormGenerator = ({
           required={field.required}
           value={formData[field.name] || ""}
           onChange={handleChange}
-          className="p-2 border rounded w-full"
+          className="pl-2 w-full py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
         />
-      </div>
+        </div>
+      
     ),
     email: field => (
       <div key={field.name} className="flex flex-col space-y-2  w-full">
-        <label htmlFor={field.name} className="font-medium">
+        <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 mb-1">
           {field.label}
         </label>
         <input
@@ -72,13 +74,13 @@ export const FormGenerator = ({
           required={field.required}
           value={formData[field.name] || ""}
           onChange={handleChange}
-          className="p-2 border rounded w-full"
+          className="pl-2 w-full py-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all"
         />
       </div>
     ),
     file: field => (
       <div key={field.name} className="flex flex-col space-y-2 w-full">
-        <label htmlFor={field.name} className="font-medium">
+        <label htmlFor={field.name} className="block text-sm font-medium text-gray-700 mb-1">
           {field.label}
         </label>
         <input

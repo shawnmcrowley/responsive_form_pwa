@@ -1,8 +1,8 @@
 "use client"
 
 import { useState } from "react";
-import { FormGenerator } from "../components/form_generator";
-import formConfig from "../configs/formConfig";
+import { FormGenerator } from "@/app/components/form_generator";
+import formConfig from "@/app/configs/formConfig";
 
 
 export default function Home() {

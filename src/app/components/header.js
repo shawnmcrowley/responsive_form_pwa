@@ -30,7 +30,7 @@ export default function Header() {
                     <a href="/api/v1/persons" className="text-gray-500 dark:text-white hover:underline">API's (Get)</a>
                 </li>
                 <li>
-                    <a href="/formutil" className="text-gray-500 dark:text-white hover:underline">Demo Form</a>
+                    <a href="/ui/forms" className="text-gray-500 dark:text-white hover:underline">Data Form</a>
                 </li>
                 <li>
                     <a href="/ui/console" className="text-gray-500 dark:text-white hover:underline">View Data</a>

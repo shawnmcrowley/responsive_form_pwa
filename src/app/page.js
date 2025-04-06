@@ -1,9 +1,9 @@
-import DataForm from "./components/forms";
+import Landing from "./components/landing";
 
 export default function Home() {
   return (
-    <div>
-      <DataForm/>
+    <div className="pt-8">      
+      <Landing/>
     </div>
   );
 }
