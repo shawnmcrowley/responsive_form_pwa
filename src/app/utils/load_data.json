@@ -1,7 +1,7 @@
 {
-    "FirstName": "Jim",
-    "LastName": "Walker",
-    "Email": "jim.walker@abcd.com",
-    "Password": "XXXXXXXXXX",
-    "Deleted": false
+    "FIRSTNAME": "Steve",
+    "LASTNAME": "Balmer",
+    "EMAIL": "steveb@microsoft.com",
+    "PASSWORD": "*******",
+    "DELETED": true
 }

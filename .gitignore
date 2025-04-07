@@ -43,9 +43,10 @@ next-env.d.ts
 # public
 /public/sw*.js
 
-utils
+
 certificates
 snowflake.log
 
 .gitignore
 *.p8
+*.txt
