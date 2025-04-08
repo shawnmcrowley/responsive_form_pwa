@@ -6,12 +6,7 @@ First, run the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
@@ -61,11 +56,78 @@ This section should list any major frameworks/libraries used to bootstrap your p
 
 * https://nextjs.org
 
+# 
+
+To integrate Swagger documentation into a Next.js project using `next-swagger-ui` and `next-jsdoc`, follow these steps: Install Dependencies.
+
+Code
+
+```
+    npm install next-swagger-ui next-jsdoc swagger-ui-react swagger-jsdoc
+```
+
+* *   **Create Swagger Configuration**: Create a configuration file (e.g., `src/swaggerConfig.js`) to define the basic information for your API documentation.
+
+JavaScript
+
+```
+    // src/swaggerConfig.js    const swaggerDefinition = {      openapi: '3.0.0',      info: {        title: 'My API',        version: '1.0.0',        description: 'Documentation for my Next.js API',      },    };    const options = {      swaggerDefinition,      apis: ['./src/pages/api/**/*.js'], // Path to API routes    };    export default options;
+```
+
+* *   **Generate Swagger Specification**: Create a utility function to generate the Swagger specification using `next-jsdoc`.
+
+JavaScript
+
+```
+    // src/utils/swagger.js    import { withSwagger } from 'next-swagger-doc';    import swaggerConfig from '../swaggerConfig';    export const getSwaggerSpec = async () => {      const spec = await withSwagger(swaggerConfig)();      return spec;    };
+```
+
+* *   **Create API Documentation Page**: Create a page to display the Swagger UI (e.g., `src/pages/docs/index.js`).
+
+JavaScript
+
+```
+    // src/pages/docs/index.js    import React, { useState, useEffect } from 'react';    import SwaggerUI from 'swagger-ui-react';    import 'swagger-ui-react/swagger-ui.css';    import { getSwaggerSpec } from '../../utils/swagger';    const Docs = () => {      const [swaggerSpec, setSwaggerSpec] = useState(null);      useEffect(() => {        const fetchSwaggerSpec = async () => {          const spec = await getSwaggerSpec();          setSwaggerSpec(spec);        };        fetchSwaggerSpec();      }, []);      if (!swaggerSpec) {        return <div>Loading Swagger documentation...</div>;      }      return <SwaggerUI spec={swaggerSpec} />;    };    export default Docs;
+```
+
+* *   **Add JSDoc Comments to API Routes**: Add JSDoc comments to your API route files to describe the endpoints and their parameters.
+
+JavaScript
+
+```
+    // src/pages/api/hello.js    /**
+     * @openapi
+     * /api/hello:
+     *   get:
+     *     description: Returns a hello message
+     *     responses:
+     *       200:
+     *         description: Success
+     *         content:
+     *           application/json:
+     *             schema:
+     *               type: object
+     *               properties:
+     *                 message:
+     *                   type: string
+     */    export default function handler(req, res) {      res.status(200).json({ message: 'Hello from Next.js!' });    }
+```
+
+* *   **Run the Application**: Start your Next.js development server.
+
+Code
+
+```
+    npm run dev
+```
+
+* *   **Access Documentation**: Navigate to `/docs` in your browser to view the generated Swagger UI.
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- INSTALLATION -->
 
-## Installation and Configuration
+### Installation and Configuration
 
 # Snowflake REST API Using Key Pair Authentication
 
