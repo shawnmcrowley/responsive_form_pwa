@@ -40,10 +40,13 @@ https://www.linkedin.com/in/shawnmcrowley
 
 Simple Form to represent Responsive Design and the Ability to add PWA for Desktop/Mobile Installation, offline usage, and rendering on Desktop and Mobile
 
-Here's why:
-* Your time should be focused on creating something amazing. A project that solves a problem and helps others
-* You shouldn't be doing the same tasks over and over like creating multiple Apps from scratch
-* You should implement DRY principles to the rest of your life :smile:
+The Basics:
+* Start by creating a nextjs project
+* Add the snowflake-sdk via npm install
+* Configure credentials, a sample warehouse, schema, and table for testing.  See SQL script in "utils" folder.  Follow instructions below for setting up Key/Value Pair
+* Create a .env file to store Snowflake credentials and variables for connecting
+* Before creating a UI, test first with a command line script to validate connectivity and simple operations.  See sampe node script in "utils" folder.
+* Once the operations and connectivity work, move on to the UI design and API's
 
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
