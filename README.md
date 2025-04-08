@@ -123,13 +123,87 @@ Code
 
 * *   **Access Documentation**: Navigate to `/docs` in your browser to view the generated Swagger UI.
 
+# 
+
+Here's how to pass GET data to a Next.js App Router API and loop through it:
+
+JavaScript
+
+```
+// app/api/items/route.jsexport async function GET(request) {  const { searchParams } = new URL(request.url);  const ids = searchParams.getAll('id'); // Get all values for the 'id' parameter  const items = ids.map((id) => ({    id: id,    name: `Item ${id}`,  }));  return Response.json(items);}
+```
+
+JavaScript
+
+```
+// app/page.jsasync function getItems() {  const res = await fetch('/api/items?id=1&id=2&id=3');  return res.json();}export default async function Page() {  const items = await getItems();  return (    <ul>
+      {items.map((item) => (        <li key={item.id}>{item.name}</li>      ))}
+    </ul>  );}
+```
+
+In this example:
+
+* *   API Route (`app/api/items/route.js`):
+*     
+*     * *   It extracts all values of the `id` query parameter using `searchParams.getAll('id')`.
+*     * *   It creates an array of `items` based on the extracted IDs.
+*     * *   It returns the `items` array as a JSON response.
+*     
+* *   Page Component (`app/page.js`):
+*     
+*     * *   It fetches data from the API route using `fetch`. The URL includes multiple `id` parameters (e.g., `id=1&id=2&id=3`).
+*     * *   It renders a list of items, mapping through the `items` array and displaying each item's name.
+*     
+
+This approach allows you to send multiple values for the same query parameter and process them on the server-side.
+
+# 
+
+Here's how to post data to Snowflake using Next.js and the Snowflake SDK for Node.js:
+
+1\. Install the Snowflake SDK
+
+Code
+
+```
+npm install snowflake-sdk
+```
+
+2\. Create a Next.js API route
+
+Create a file, for example, `pages/api/snowflake-data.js`, to handle the POST request.
+
+JavaScript
+
+```
+// pages/api/snowflake-data.jsimport snowflake from 'snowflake-sdk';export default async function handler(req, res) {  if (req.method === 'POST') {    try {      const connection = snowflake.createConnection({        account: process.env.SNOWFLAKE_ACCOUNT,        username: process.env.SNOWFLAKE_USERNAME,        password: process.env.SNOWFLAKE_PASSWORD,        database: process.env.SNOWFLAKE_DATABASE,        schema: process.env.SNOWFLAKE_SCHEMA,        warehouse: process.env.SNOWFLAKE_WAREHOUSE      });      await new Promise((resolve, reject) => {        connection.connect((err, conn) => {          if (err) {            reject(err);            return;          }          resolve(conn);        });      });      const { data } = req.body;      const sql = `INSERT INTO your_table (column1, column2) VALUES (?, ?)`; // adjust the query      await new Promise((resolve, reject) => {          connection.execute({              sqlText: sql,              binds: [data.column1, data.column2],              complete: (err, stmt, rows) => {                  if (err) {                      reject(err);                      return;                  }                 resolve({stmt, rows});              }          });      });      connection.destroy();      res.status(200).json({ message: 'Data successfully posted to Snowflake' });    } catch (error) {      console.error('Error posting data to Snowflake:', error);      res.status(500).json({ error: 'Failed to post data to Snowflake' });    }  } else {    res.status(405).json({ message: 'Method not allowed' });  }}
+```
+
+3\. Send data from your Next.js component
+
+JavaScript
+
+```
+// Your Next.js componentasync function postDataToSnowflake() {  const data = {    column1: 'value1',    column2: 'value2',  };  try {    const response = await fetch('/api/snowflake-data', {      method: 'POST',      headers: {        'Content-Type': 'application/json',      },      body: JSON.stringify({ data }),    });    const result = await response.json();    console.log(result);  } catch (error) {    console.error('Error:', error);  }}
+```
+
+4\. Environment variables
+
+Make sure to set up your environment variables (e.g., in a `.env.local` file) for Snowflake credentials:
+
+Code
+
+```
+SNOWFLAKE_ACCOUNT=your_accountSNOWFLAKE_USERNAME=your_usernameSNOWFLAKE_PASSWORD=your_passwordSNOWFLAKE_DATABASE=your_databaseSNOWFLAKE_SCHEMA=your_schemaSNOWFLAKE_WAREHOUSE=your_warehouse
+```
+
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- INSTALLATION -->
 
 ### Installation and Configuration
 
-# Snowflake REST API Using Key Pair Authentication
+### Snowflake REST API Using Key Pair Authentication
 
 **REST API:**
 
