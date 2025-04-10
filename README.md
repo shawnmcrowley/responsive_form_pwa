@@ -447,6 +447,7 @@ if \_\_name\_\_ == '\_\_main\_\_':
 
 _‘‘‘Note: The process of generating Public and Private Keys using OpenSSL and python code is referenced from the_ [_official Snowflake documentation_](https://docs.snowflake.com/en/user-guide/key-pair-auth)_.’’’_
 
+<p><a href="https://select.dev/docs/snowflake-developer-guide/snowflake-key-pair">Additional Link for Key/Pair Generation</a></p>
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- CONTRIBUTING -->
