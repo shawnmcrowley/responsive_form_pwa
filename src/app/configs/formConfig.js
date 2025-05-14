@@ -11,7 +11,7 @@ export default function formConfig() {
                 name: 'firstname',
                 placeholder: 'Firt Name',
                 required: true,
-                defaultValue: 'John', // Default value for the text input
+                defaultValue: 'Rene', // Default value for the text input
             },
             {
                 type: 'text',
