@@ -6,13 +6,13 @@ export default function Footer() {
                 </span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                     <li>
-                        <a href="https://github.com/shawnmcrowley/responsive_form_pwa" className="hover:underline me-4 md:me-6">About</a>
+                        <a href="https://github.com/shawnmcrowley/responsive_form_pwa" className="hover:underline me-4 md:me-6">Project Repository</a>
                     </li>
                     <li>
                         <a href="/api-docs" className="hover:underline me-4 md:me-6">API Documentation</a>
                     </li>
                     <li>
-                        <a href="/ui/console" className="hover:underline me-4 md:me-6">View Data</a>
+                        <a href="/ui/console" className="hover:underline me-4 md:me-6">Data View</a>
                     </li>
                     <li>
                         <a href="mailto:shawn.crowley@lycra.com" className="hover:underline">Contact</a>

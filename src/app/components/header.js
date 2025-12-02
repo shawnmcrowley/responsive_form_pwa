@@ -5,7 +5,7 @@ export default function Header() {
     <div className="flex flex-wrap justify-between items-center mx-auto max-w-screen-xl p-4">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
             <img src="https://flowbite.com/docs/images/logo.svg" className="h-8" alt="Flowbite Logo" />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Dashboard</span>
+            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">Architecture Console</span>
         </a>
         <div className="flex items-center space-x-6 rtl:space-x-reverse">
             <a href="tel:3022676928" className="text-sm  text-gray-500 dark:text-white hover:underline">(302) 267-6928</a>
@@ -21,19 +21,19 @@ export default function Header() {
                     <a href="/" className="text-gray-500 dark:text-white hover:underline" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="https://github.com/shawnmcrowley/responsive_form_pwa/" className="text-gray-500 dark:text-white hover:underline">Getting Started</a>
+                    <a href="https://github.com/shawnmcrowley/responsive_form_pwa/" className="text-gray-500 dark:text-white hover:underline">Project Repository</a>
                 </li>
                 <li>
                     <a href="/api-docs" className="text-gray-500 dark:text-white hover:underline">API Documentation</a>
                 </li>
                 <li>
-                    <a href="/api/v1/persons" className="text-gray-500 dark:text-white hover:underline">API's (Get)</a>
+                    <a href="/api/v1/persons" className="text-gray-500 dark:text-white hover:underline">Public API(Get) Endpoints</a>
                 </li>
                 <li>
-                    <a href="/ui/forms" className="text-gray-500 dark:text-white hover:underline">Data Form</a>
+                    <a href="/ui/forms" className="text-gray-500 dark:text-white hover:underline">Data Entry</a>
                 </li>
                 <li>
-                    <a href="/ui/console" className="text-gray-500 dark:text-white hover:underline">View Data</a>
+                    <a href="/ui/console" className="text-gray-500 dark:text-white hover:underline">Data View</a>
                 </li>
             </ul>
         </div>
