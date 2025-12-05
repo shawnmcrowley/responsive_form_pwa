@@ -32,7 +32,7 @@ const connection = snowflake.createConnection({
     database: process.env.SNOWFLAKE_DATABASE,
     schema: process.env.SNOWFLAKE_SCHEMA,
     authenticator: process.env.SNOWFLAKE_AUTHENTICATOR,
-    privateKeyPath: process.env.SNOWFLAKE_PRIVATEKEYPATH,
+    privateKeyPath: process.env.SNOWFLAKE_PRIVATEKEYPATH_FALLBACK,
     privateKeyPass: "",
 
 });
@@ -79,7 +79,7 @@ function insertData(data) {
     const valuePlaceholders = Object.keys(data).map(() => '?').join(', ');
     const values = Object.values(data);
 
-    const tableName = process.env.SNOWFLAKE_TABLE || 'PERSONS_DATA';
+    const tableName = process.env.SNOWFLAKE_TABLE || 'PERSONS';
     const sqlText = `INSERT INTO ${process.env.SNOWFLAKE_DATABASE || 'DB_TEST'}.${process.env.SNOWFLAKE_SCHEMA || 'SCHEMA_TEST'}.${tableName} (${columns}) VALUES (${valuePlaceholders})`;
 
     connection.execute({
@@ -101,7 +101,7 @@ function insertData(data) {
 // Function to select data
 function selectData() {
     connection.execute({
-        sqlText: 'SELECT * FROM DB_TEST.SCHEMA_TEST.PERSONS_DATA',
+        sqlText: `SELECT * FROM ${process.env.SNOWFLAKE_DATABASE}.${process.env.SNOWFLAKE_SCHEMA}.${process.env.SNOWFLAKE_TABLE}`,
         complete: function (err, stmt, rows) {
             if (err) {
                 console.error('Failed to execute statement due to the following error: ' + err.message);

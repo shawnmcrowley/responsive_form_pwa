@@ -1,116 +1,136 @@
 # Responsive Form PWA with Snowflake Integration
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+A modern [Next.js](https://nextjs.org) Progressive Web App demonstrating responsive form design with seamless Snowflake database integration for enterprise data management.
 
-## Getting Started
-
-First, run the development server:
+## Quick Start
 
 ```bash
+npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open [http://localhost:3000](http://localhost:3000) to view the application.
 
-<a name="readme-top"></a>
+---
 
-https://www.linkedin.com/in/shawnmcrowley
+## 📋 Table of Contents
 
-<!-- TABLE OF CONTENTS -->
-<details>
-  <summary>Table of Contents</summary>
-  <ol>
-    <li>
-      <a href="#about-the-project">About The Project</a>
-    </li>
-    <li><a href="#project-structure">Project Structure</a></li>
-    <li><a href="#features">Features</a></li>
-    <li><a href="#installation">Installation and Configuration</a></li>
-    <li><a href="#snowflake-integration">Snowflake Integration</a></li>
-    <li><a href="#contributing">Contributing</a></li>
-    <li><a href="#license">License</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ol>
-</details>
+- [About](#about)
+- [Features](#features)
+- [Project Structure](#project-structure)
+- [Installation](#installation)
+- [Snowflake Integration](#snowflake-integration)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-<!-- ABOUT THE PROJECT -->
-### About The Project
+---
 
-Simple Form to represent Responsive Design and the Ability to add PWA for Desktop/Mobile Installation, offline usage, and rendering on Desktop and Mobile
+## About
 
-The Basics:
-* Start by creating a nextjs project
-* Add the snowflake-sdk via npm install
-* Configure credentials, a sample warehouse, schema, and table for testing. See SQL script in "utils" folder. Follow instructions below for setting up Key/Value Pair
-* Create a .env file to store Snowflake credentials and variables for connecting
-* Before creating a UI, test first with a command line script to validate connectivity and simple operations. See sample node script in "utils" folder.
-* Once the operations and connectivity work, move on to the UI design and API's
+This project combines responsive web design principles with Progressive Web App (PWA) capabilities to create a modern form interface with robust Snowflake backend integration. Users can access the application on desktop or mobile, with offline functionality and seamless data synchronization.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Key Highlights
 
-### Project Structure
+- 📱 **Responsive Design** - Works flawlessly across all devices
+- 🔌 **PWA Enabled** - Install as a native app, works offline
+- 🗄️ **Snowflake Integration** - Enterprise-grade data management
+- 🔐 **Secure Authentication** - Key pair authentication support
+- 📊 **API Documentation** - Built-in Swagger UI
+- ⚙️ **Dynamic Forms** - Configuration-driven form generation
+
+---
+
+## Features
+
+- ✅ Responsive form interface with modern design patterns
+- ✅ Progressive Web App (PWA) capabilities for offline usage and home screen installation
+- ✅ Snowflake integration for enterprise data storage and retrieval
+- ✅ API documentation with Swagger
+- ✅ Dynamic form generation based on configuration files
+- ✅ Environment-based configuration for multiple deployments
+- ✅ Key pair authentication for secure Snowflake connections
+
+---
+
+## Project Structure
 
 ```
-/
-├── public/             # Static assets and PWA files
+responsive_form_pwa/
+├── public/                 # Static assets and PWA manifest files
 ├── src/
-│   ├── app/            # Next.js app router components
-│   │   ├── api/        # API routes
-│   │   ├── api-docs/   # Swagger documentation
-│   │   ├── components/ # UI components (footer, form_generator, header)
-│   │   ├── configs/    # Configuration files (formConfig, swaggerConfig)
-│   │   ├── formutil/   # Form utilities
-│   │   └── utils/      # Snowflake scripts and SQL files
-│   ├── globals.css     # Global styles
-│   └── layout.js       # Root layout
-└── .env.local          # Environment variables for Snowflake
+│   ├── app/
+│   │   ├── api/           # API routes for backend operations
+│   │   ├── api-docs/      # Swagger API documentation
+│   │   ├── components/    # Reusable UI components
+│   │   │   ├── footer/
+│   │   │   ├── form_generator/
+│   │   │   └── header/
+│   │   ├── configs/       # Configuration files
+│   │   │   ├── formConfig.js
+│   │   │   └── swaggerConfig.js
+│   │   ├── formutil/      # Form utilities and helpers
+│   │   ├── utils/         # Snowflake setup scripts and SQL
+│   │   ├── globals.css    # Global styles
+│   │   └── layout.js      # Root layout component
+│   └── .env.local         # Environment variables (not in version control)
+├── package.json
+└── README.md
 ```
 
-### Features
+---
 
-- Responsive form interface with modern design
-- Progressive Web App (PWA) capabilities for offline usage
-- Snowflake integration for data storage and retrieval
-- API documentation with Swagger
-- Dynamic form generation based on configuration
-- Environment-based configuration for different deployments
+## Installation
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+### Prerequisites
 
-### Installation
+- Node.js 18+ and npm
+- Snowflake account with database and warehouse access
+- OpenSSL (for key pair generation)
 
-1. Clone the repository
-   ```sh
+### Steps
+
+1. **Clone the repository**
+   ```bash
    git clone https://github.com/shawnmcrowley/responsive_form_pwa.git
+   cd responsive_form_pwa
    ```
-2. Install NPM packages
-   ```sh
+
+2. **Install dependencies**
+   ```bash
    npm install
    ```
-3. Create a `.env.local` file with your Snowflake credentials
-   ```
+
+3. **Generate Snowflake key pair** (see [Key Pair Authentication](#key-pair-authentication))
+
+4. **Create `.env.local`** with your Snowflake credentials
+   ```env
    SNOWFLAKE_ACCOUNT=your_account
    SNOWFLAKE_USERNAME=your_username
-   SNOWFLAKE_PASSWORD=your_password
    SNOWFLAKE_DATABASE=your_database
    SNOWFLAKE_SCHEMA=your_schema
    SNOWFLAKE_WAREHOUSE=your_warehouse
+   SNOWFLAKE_PRIVATE_KEY=your_private_key_path
+   SNOWFLAKE_PRIVATE_KEY_PASSPHRASE=your_passphrase
    ```
-4. Start the development server
-   ```sh
+
+5. **Run the development server**
+   ```bash
    npm run dev
    ```
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+6. **Test Snowflake connectivity** using the sample script in `src/app/utils/`
 
-### Snowflake Integration
+---
 
-This project demonstrates integration with Snowflake using both the Snowflake SDK and REST API with key pair authentication.
+## Snowflake Integration
 
-#### Using Snowflake SDK
+This project supports two methods of connecting to Snowflake:
+
+### SDK Connection
 
 ```javascript
-// Example of connecting to Snowflake using the SDK
+// filepath: src/app/api/snowflake-connection.js
 import snowflake from 'snowflake-sdk';
 
 const connection = snowflake.createConnection({
@@ -124,92 +144,83 @@ const connection = snowflake.createConnection({
 
 connection.connect((err, conn) => {
   if (err) {
-    console.error('Error connecting to Snowflake:', err);
+    console.error('Connection error:', err);
     return;
   }
   
-  // Execute a query
   connection.execute({
-    sqlText: 'SELECT * FROM your_table',
+    sqlText: 'SELECT * FROM your_table LIMIT 10',
     complete: (err, stmt, rows) => {
-      if (err) {
-        console.error('Error executing query:', err);
-        return;
-      }
-      console.log('Query results:', rows);
+      if (err) console.error('Query error:', err);
+      else console.log('Results:', rows);
       connection.destroy();
     }
   });
 });
 ```
 
-#### Snowflake REST API Using Key Pair Authentication
+### REST API with Key Pair Authentication
 
-**REST API:**
+#### Key Concepts
 
-A REST API (Representational State Transfer API) is a way for different software systems to talk to each other over the internet. It uses standard HTTP methods like GET, POST, PUT, and DELETE to request and send data, allowing clients (like websites or apps) to interact with a server to access, update, or delete information.
+**REST API** - Standard HTTP-based communication allowing clients to interact with servers using GET, POST, PUT, and DELETE methods.
 
-**JWT (JSON Web Token):**
+**JWT (JSON Web Token)** - Secure, stateless authentication mechanism containing encoded user information and cryptographic signatures.
 
-JWT (JSON Web Token) is commonly used in REST APIs for secure authentication and authorization. It allows the server to verify the identity of a client by sending a token with each request. The token, containing user information, is signed to ensure integrity and can be verified without needing to store session data on the server, enabling stateless communication.
+#### Setup Instructions
 
-**Steps for Key Pair Authentication:**
-
-1. Generate Public and Private Keys Using OpenSSL:
-
+1. **Generate RSA Key Pair**
    ```bash
-   # Generate private key
+   # Generate private key (PKCS8 format)
    openssl genrsa 2048 | openssl pkcs8 -topk8 -inform PEM -out rsa_key.p8 -nocrypt
    
    # Generate public key
    openssl rsa -in rsa_key.p8 -pubout -out rsa_key.pub
    ```
 
-2. Assign the Public Key to a Snowflake User:
-
+2. **Assign Public Key to Snowflake User**
    ```sql
-   ALTER USER example_user SET RSA_PUBLIC_KEY='PASTE YOUR PUBLIC KEY HERE';
+   ALTER USER example_user SET RSA_PUBLIC_KEY='<YOUR_PUBLIC_KEY>';
    ```
 
-3. Verify the User's Public Key Fingerprint:
-
+3. **Verify Key Fingerprint**
    ```sql
    DESC USER example_user;
-   SELECT SUBSTR((SELECT "value" FROM TABLE(RESULT_SCAN(LAST_QUERY_ID()))
-     WHERE "property" = 'RSA_PUBLIC_KEY_FP'), LEN('SHA256:') + 1);
    ```
 
-4. Generate a JWT Token using the private key and make API requests.
+4. **Use Private Key for JWT Authentication** in API requests
 
-<p><a href="https://select.dev/docs/snowflake-developer-guide/snowflake-key-pair">Additional Link for Key/Pair Generation</a></p>
+📖 **Reference:** [Snowflake Key Pair Authentication Guide](https://select.dev/docs/snowflake-developer-guide/snowflake-key-pair)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+---
 
-<!-- CONTRIBUTING -->
 ## Contributing
 
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
+Contributions are welcome! Please follow these steps:
 
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/newfeature`)
-3. Commit your Changes (`git commit -m 'Add some newfeature'`)
-4. Push to the Branch (`git push origin feature/newfeature`)
+1. Fork the repository
+2. Create a feature branch: `git checkout -b feature/amazing-feature`
+3. Commit your changes: `git commit -m 'Add amazing feature'`
+4. Push to the branch: `git push origin feature/amazing-feature`
 5. Open a Pull Request
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+---
 
-<!-- LICENSE -->
 ## License
 
-Distributed under the MIT License. See `LICENSE.txt` for more information.
+Distributed under the MIT License. See `LICENSE.txt` for details.
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+---
 
-<!-- CONTACT -->
 ## Contact
 
-Your Name - [@shawnmcrowley](https://twitter.com/shawnmcrowley) - scrowley@buffalo.edu
+**Shawn Crowley**
 
-Project Link: [https://github.com/shawnmcrowley/responsive_form_pwa](https://github.com/shawnmcrowley/responsive_form_pwa)
+- 📧 Email: [shawn.crowley@lycra.com](mailto:shawn.crowley@lycra.com)
+- 🔗 LinkedIn: [@shawnmcrowley](https://www.linkedin.com/in/shawnmcrowley)
+- 🐦 Twitter: [@shawnmcrowley](https://twitter.com/shawnmcrowley)
+- 🔗 GitHub: [responsive_form_pwa](https://github.com/shawnmcrowley/responsive_form_pwa)
 
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+---
+
+**[Back to top](#)**
