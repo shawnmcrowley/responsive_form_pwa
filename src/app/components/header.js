@@ -21,7 +21,7 @@ export default function Header() {
                     <a href="/" className="text-gray-500 dark:text-white hover:underline" aria-current="page">Home</a>
                 </li>
                 <li>
-                    <a href="https://github.com/shawnmcrowley/responsive_form_pwa/" className="text-gray-500 dark:text-white hover:underline">Project Repository</a>
+                    <a href="https://dev.azure.com/LYCRADevOps/NextJS%20PWA%20FrontEnd%20and%20Integration%20with%20SnowFlake" className="text-gray-500 dark:text-white hover:underline">Project Repository</a>
                 </li>
                 <li>
                     <a href="/api-docs" className="text-gray-500 dark:text-white hover:underline">API Documentation</a>
