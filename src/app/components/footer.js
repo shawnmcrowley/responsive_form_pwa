@@ -6,7 +6,7 @@ export default function Footer() {
                 </span>
                 <ul className="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 dark:text-gray-400 sm:mt-0">
                     <li>
-                        <a href="https://github.com/shawnmcrowley/responsive_form_pwa" className="hover:underline me-4 md:me-6">Project Repository</a>
+                        <a href="https://dev.azure.com/LYCRADevOps/NextJS%20PWA%20FrontEnd%20and%20Integration%20with%20SnowFlake" className="hover:underline me-4 md:me-6">Project Repository</a>
                     </li>
                     <li>
                         <a href="/api-docs" className="hover:underline me-4 md:me-6">API Documentation</a>

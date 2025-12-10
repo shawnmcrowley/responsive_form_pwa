@@ -1,57 +1,5 @@
 import { NextResponse } from "next/server";
-import snowflake from "snowflake-sdk";
-import { resolve } from "path";
-
-
-// Configure Snowflake
-snowflake.configure({
-  logLevel: "ERROR",
-  additionalLogToConsole: false
-});
-
-// Promisify snowflake connection
-const connectToSnowflake = (connection) => {
-  return new Promise((resolve, reject) => {
-    connection.connectAsync((err) => {
-      if (err) {
-        console.error("Unable to connect to Snowflake:", err.message);
-        reject(err);
-      } else {
-        console.log("Successfully connected to Snowflake Database:", process.env.SNOWFLAKE_DATABASE);
-        resolve();
-      }
-    });
-  });
-};
-
-// Promisify snowflake query execution
-const executeQuery = (connection, sqlText, bindsArray) => {
-  return new Promise((resolve, reject) => {
-    connection.execute({
-      sqlText: sqlText,
-      binds: bindsArray,
-      complete: (err, stmt, rows) => {
-        if (err) {
-          console.error('Error executing query:', err);
-          reject(err);
-        } else {
-          console.log(`Query executed successfully, returned ${rows.length} records`);
-          resolve(rows);
-        }
-      }
-    });
-  });
-};
-
-// Promisify connection destruction
-const destroyConnection = (connection) => {
-  return new Promise((resolve) => {
-    connection.destroy(() => {
-      console.log('Connection closed');
-      resolve();
-    });
-  });
-};
+import { withSnowflake } from "@/app/lib/snowflake";
 
 
 /**
@@ -91,40 +39,16 @@ const destroyConnection = (connection) => {
 
 export async function GET(req) {
   try {
-    // Create connection using environment variables
-    const connection = snowflake.createConnection({
-      account: process.env.SNOWFLAKE_ACCOUNT,
-      username: process.env.SNOWFLAKE_USERNAME,
-      password: process.env.SNOWFLAKE_PASSWORD,
-      database: process.env.SNOWFLAKE_DATABASE,
-      schema: process.env.SNOWFLAKE_SCHEMA,
-      warehouse: process.env.SNOWFLAKE_WAREHOUSE,
-      role: process.env.SNOWFLAKE_ROLE,
-      authenticator: process.env.SNOWFLAKE_AUTHENTICATOR,
-      // Use resolve for straight Private Key Authentication
-      privateKeyPath: resolve(process.cwd(), process.env.SNOWFLAKE_PRIVATEKEYPATH),
-      // Use readFileSync funtion if you need to read the file directly
-      //privateKeyPath: readFileSync(resolve(process.cwd(),process.env.SNOWFLAKE_PRIVATEKEYPATH ),'utf8'),
-      privateKeyPass: process.env.SNOWFLAKE_PRIVATEKEYPASS
+    const rows = await withSnowflake(async (client) => {
+      const tableName = client.getTableName();
+      return await client.execute(`SELECT * FROM ${tableName}`);
     });
 
-    // Connect to Snowflake
-    await connectToSnowflake(connection);
-
-    // Execute query - modify the table name as needed
-    const tableName = `${process.env.SNOWFLAKE_DATABASE}.${process.env.SNOWFLAKE_SCHEMA}.${process.env.SNOWFLAKE_TABLE}`;
-    const rows = await executeQuery(connection, `SELECT * FROM ${tableName}`);
-
-    // Close connection
-    await destroyConnection(connection);
-
-    // Return data as JSON
     return NextResponse.json({
       success: true,
       data: rows,
       count: rows.length
     });
-
   } catch (error) {
     console.error("Error in Snowflake API route:", error);
     return NextResponse.json({
@@ -171,60 +95,33 @@ export async function GET(req) {
  */
 
 export async function POST(req) {
-
-  const connection = snowflake.createConnection({
-    account: process.env.SNOWFLAKE_ACCOUNT,
-    username: process.env.SNOWFLAKE_USERNAME,
-    password: process.env.SNOWFLAKE_PASSWORD,
-    database: process.env.SNOWFLAKE_DATABASE,
-    schema: process.env.SNOWFLAKE_SCHEMA,
-    warehouse: process.env.SNOWFLAKE_WAREHOUSE,
-    role: process.env.SNOWFLAKE_ROLE,
-    authenticator: process.env.SNOWFLAKE_AUTHENTICATOR,
-    // Use resolve for straight Private Key Authentication
-    privateKeyPath: resolve(process.cwd(), process.env.SNOWFLAKE_PRIVATEKEYPATH),
-    // Use readFileSync funtion if you need to read the file directly
-    //privateKeyPath: readFileSync(resolve(process.cwd(),process.env.SNOWFLAKE_PRIVATEKEYPATH ),'utf8'),
-    privateKeyPass: process.env.SNOWFLAKE_PRIVATEKEYPASS
-  });
-
   try {
-    const formData = await req.formData()
-    const firstname = formData.get('firstname')
-    const lastname = formData.get('lastname')
-    const email = formData.get('email')
-    const password = formData.get('password')
+    const formData = await req.formData();
+    const firstname = formData.get('firstname');
+    const lastname = formData.get('lastname');
+    const email = formData.get('email');
+    const password = formData.get('password');
 
-    // Validate input
     if (!firstname || !lastname || !email || !password) {
       return NextResponse.json({
         message: "Missing required fields",
         status: 400
-      }, { status: 400 })
+      }, { status: 400 });
     }
 
-    console.log('Received data: ', firstname, lastname, email, password)
+    console.log('Received data:', firstname, lastname, email, password);
 
-    // Connect to Snowflake
-    await connectToSnowflake(connection);
+    const rows = await withSnowflake(async (client) => {
+      const tableName = client.getTableName();
+      const sqlText = `INSERT INTO ${tableName} (FIRSTNAME, LASTNAME, EMAIL, PASSWORD) VALUES (?,?,?,?)`;
+      return await client.execute(sqlText, [firstname, lastname, email, password]);
+    });
 
-    // Execute query - modify the table name as needed
-    const tableName = `${process.env.SNOWFLAKE_DATABASE}.${process.env.SNOWFLAKE_SCHEMA}.${process.env.SNOWFLAKE_TABLE}`;
-     // Updating insert statement to include only column data, ID is autogenerated and will be returned
-     const sqlText =  `INSERT INTO ${tableName} (FIRSTNAME, LASTNAME, EMAIL, PASSWORD)VALUES (?,?,?,?)`
-     const bindsArray = [firstname, lastname, email, password];
-     const rows = await executeQuery(connection,sqlText,bindsArray);
-
-    // Close connection
-    await destroyConnection(connection);
-
-    // Return data as JSON
     return NextResponse.json({
       success: true,
       data: rows,
       count: rows.length
     });
-
   } catch (error) {
     console.error("Error in Snowflake API route:", error);
     return NextResponse.json({
@@ -234,8 +131,7 @@ export async function POST(req) {
       status: 500
     });
   }
-
-  }
+}
 
 
 
