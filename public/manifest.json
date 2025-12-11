@@ -3,6 +3,7 @@
     "short_name": "Form Entry PWA",
     "description": "A Progressive Web Form with PWA Support",
     "start_url": "/",
+    "id": "/",
     "display": "standalone",
     "theme_color": "#ffffff",
     "background_color": "#ffffff",
