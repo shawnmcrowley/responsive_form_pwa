@@ -19,7 +19,7 @@ const options = {
 
     servers: [
       {
-        url: 'http://localhost:3000',
+        url: process.env.NEXT_PUBLIC_API_URL || 'http://localhost/responsive_forms',
         description: 'Development Server'
       }
     ],

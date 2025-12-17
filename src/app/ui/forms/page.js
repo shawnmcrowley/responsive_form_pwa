@@ -1,6 +1,14 @@
 "use client"
 
 import { useState } from "react";
+
+const getBasePath = () => {
+  if (typeof window !== 'undefined') {
+    const path = window.location.pathname;
+    if (path.startsWith('/responsive_forms')) return '/responsive_forms';
+  }
+  return '';
+};
 import { FormGenerator } from "@/app/components/form_generator";
 import formConfig from "@/app/configs/formConfig";
 
@@ -54,7 +62,8 @@ export default function Home() {
                 return
             }
 */
-            const response = await fetch('/api/v1/persons', {
+            const basePath = getBasePath();
+            const response = await fetch(`${basePath}/api/v1/persons`, {
                 method: 'POST',
                 body: formDataToSend,
                 // DO NOT set Content-Type header when sending FormData

@@ -1,4 +1,13 @@
 "use client"
+
+const getBasePath = () => {
+  if (typeof window !== 'undefined') {
+    const path = window.location.pathname;
+    if (path.startsWith('/responsive_forms')) return '/responsive_forms';
+  }
+  return '';
+};
+
 import { AllCommunityModule, ModuleRegistry } from "ag-grid-community";
 import { AgGridReact } from "ag-grid-react";
 import "ag-grid-community/styles/ag-grid.css"
@@ -26,7 +35,8 @@ export default function Page() {
 
         const fetchData = async () => {
 
-            const response = await fetch("/api/v1/persons")
+            const basePath = getBasePath();
+            const response = await fetch(`${basePath}/api/v1/persons`)
             const persons = await response.json()
             console.log(persons.data)
             setRowData(persons.data)
